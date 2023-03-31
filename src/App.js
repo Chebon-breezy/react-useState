@@ -1,23 +1,22 @@
-import logo from './logo.svg';
+import React, {useState} from 'react';
 import './App.css';
+import Tweet from './Tweet'
 
 function App() {
+  const [users, setUsers] = useState([
+    {name: "Ed", message:"hello there", likes: "500"},
+    {name: "John", message:"Iam the true king", likes: "800"},
+    {name: "Travesy", message:"My new channel is available", likes: "900"},
+    {name: "Mosh", message:"Welcome to my channel", likes: "400"},
+    {name: "Brian", message:"Iam a React Developer", likes: "1000"}
+  ]);
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      {users.map(user =>(
+        <Tweet name={user.name} message={user.message} likes={user.likes}/>
+      ))}
+      
     </div>
   );
 }
